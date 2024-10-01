@@ -1,6 +1,7 @@
 Please Add follow:
 
-libs:
+libs://
+
 [versions]
 agp = "8.6.0"
 kotlin = "1.9.0"
@@ -42,7 +43,10 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 
 
-build.gradle.kts:
+build.gradle.kts://
+
+
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
