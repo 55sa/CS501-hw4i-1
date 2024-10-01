@@ -67,10 +67,10 @@ fun ProductPanesApp() {
     val configuration = LocalConfiguration.current
     var selectedProduct by rememberSaveable { mutableStateOf<Product?>(null) }
 
-    // 根据屏幕方向决定布局
+
     when (configuration.orientation) {
         Configuration.ORIENTATION_LANDSCAPE -> {
-            // 横屏模式下的布局：双 Pane（产品列表 + 产品详情）
+
             Row(modifier = Modifier.fillMaxSize()) {
                 ProductList(
                     products = products,
@@ -85,7 +85,7 @@ fun ProductPanesApp() {
             }
         }
         Configuration.ORIENTATION_PORTRAIT -> {
-            // 竖屏模式下的布局：单 Pane（先显示列表，后显示详情）
+
             if (selectedProduct == null) {
                 ProductList(
                     products = products,
@@ -122,7 +122,7 @@ fun ProductList(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // 产品列表项
+
         products.forEach { product ->
             Text(
                 text = product.name,
@@ -141,7 +141,7 @@ fun ProductList(
 fun ProductDetailPane(
     product: Product?,
     modifier: Modifier = Modifier,
-    onGoBack: (() -> Unit)? = null // 添加 Go Back 回调
+    onGoBack: (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier
@@ -151,7 +151,7 @@ fun ProductDetailPane(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (product != null) {
-            // 显示选中产品的详细信息
+
             Text(
                 text = "Details for ${product.name}",
                 fontSize = 20.sp,
@@ -163,13 +163,13 @@ fun ProductDetailPane(
             Spacer(modifier = Modifier.height(8.dp))
             Text(text = "Description: ${product.description}", fontSize = 16.sp)
 
-            // "Go Back" 按钮
+
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = { onGoBack?.invoke() }) {
                 Text("Go Back")
             }
         } else {
-            // 没有选中的产品时显示的提示
+
             Text(
                 text = "No product selected",
                 fontSize = 20.sp,
